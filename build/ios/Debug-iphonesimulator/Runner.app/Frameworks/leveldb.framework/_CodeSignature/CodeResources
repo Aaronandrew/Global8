@@ -6,11 +6,34 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		nxpBtNOPXX15UQopw3KyORa28ks=
+		VQLLor82Dl+rA9VgE9I+ObHdRG4=
+		</data>
+		<key>leveldb_Privacy.bundle/Info.plist</key>
+		<data>
+		2ymBCW2Gg28116GTmWe/Uzzw0Cw=
+		</data>
+		<key>leveldb_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		JTGYQTSkuJ7uGfD1SfjQTq3ngyk=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>leveldb_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			n8bYSkQWN2brPc6Y5HSQTRvjp+tfSu85HV9tq9H6l6Y=
+			</data>
+		</dict>
+		<key>leveldb_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CsAKC37/AHnc4lLimrQdcc9YxslP5OROoRDO9cYpcOE=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^.*</key>

@@ -57,6 +57,29 @@ typedef NS_ENUM(NSUInteger, Source) {
 - (instancetype)initWithValue:(Source)value;
 @end
 
+/// The listener retrieves data and listens to updates from the local Firestore cache only.
+/// If the cache is empty, an empty snapshot will be returned.
+/// Snapshot events will be triggered on cache updates, like local mutations or load bundles.
+///
+/// Note that the data might be stale if the cache hasn't synchronized with recent server-side
+/// changes.
+typedef NS_ENUM(NSUInteger, ListenSource) {
+  /// The default behavior. The listener attempts to return initial snapshot from cache and retrieve
+  /// up-to-date snapshots from the Firestore server.
+  /// Snapshot events will be triggered on local mutations and server side updates.
+  ListenSourceDefaultSource = 0,
+  /// The listener retrieves data and listens to updates from the local Firestore cache only.
+  /// If the cache is empty, an empty snapshot will be returned.
+  /// Snapshot events will be triggered on cache updates, like local mutations or load bundles.
+  ListenSourceCache = 1,
+};
+
+/// Wrapper for ListenSource to allow for nullability.
+@interface ListenSourceBox : NSObject
+@property(nonatomic, assign) ListenSource value;
+- (instancetype)initWithValue:(ListenSource)value;
+@end
+
 typedef NS_ENUM(NSUInteger, ServerTimestampBehavior) {
   /// Return null for [FieldValue.serverTimestamp()] values that have not yet
   ServerTimestampBehaviorNone = 0,
@@ -86,6 +109,20 @@ typedef NS_ENUM(NSUInteger, AggregateSource) {
 - (instancetype)initWithValue:(AggregateSource)value;
 @end
 
+/// [PersistenceCacheIndexManagerRequest] represents the request types for the persistence cache
+/// index manager.
+typedef NS_ENUM(NSUInteger, PersistenceCacheIndexManagerRequest) {
+  PersistenceCacheIndexManagerRequestEnableIndexAutoCreation = 0,
+  PersistenceCacheIndexManagerRequestDisableIndexAutoCreation = 1,
+  PersistenceCacheIndexManagerRequestDeleteAllIndexes = 2,
+};
+
+/// Wrapper for PersistenceCacheIndexManagerRequest to allow for nullability.
+@interface PersistenceCacheIndexManagerRequestBox : NSObject
+@property(nonatomic, assign) PersistenceCacheIndexManagerRequest value;
+- (instancetype)initWithValue:(PersistenceCacheIndexManagerRequest)value;
+@end
+
 typedef NS_ENUM(NSUInteger, PigeonTransactionResult) {
   PigeonTransactionResultSuccess = 0,
   PigeonTransactionResultFailure = 1,
@@ -110,6 +147,18 @@ typedef NS_ENUM(NSUInteger, PigeonTransactionType) {
 - (instancetype)initWithValue:(PigeonTransactionType)value;
 @end
 
+typedef NS_ENUM(NSUInteger, AggregateType) {
+  AggregateTypeCount = 0,
+  AggregateTypeSum = 1,
+  AggregateTypeAverage = 2,
+};
+
+/// Wrapper for AggregateType to allow for nullability.
+@interface AggregateTypeBox : NSObject
+@property(nonatomic, assign) AggregateType value;
+- (instancetype)initWithValue:(AggregateType)value;
+@end
+
 @class PigeonFirebaseSettings;
 @class FirestorePigeonFirebaseApp;
 @class PigeonSnapshotMetadata;
@@ -121,6 +170,8 @@ typedef NS_ENUM(NSUInteger, PigeonTransactionType) {
 @class PigeonTransactionCommand;
 @class DocumentReferenceRequest;
 @class PigeonQueryParameters;
+@class AggregateQuery;
+@class AggregateQueryResponse;
 
 @interface PigeonFirebaseSettings : NSObject
 /// `init` unavailable to enforce nonnull fields, see the `make` class method.
@@ -257,6 +308,25 @@ typedef NS_ENUM(NSUInteger, PigeonTransactionType) {
 @property(nonatomic, strong, nullable) NSDictionary<NSString *, id> *filters;
 @end
 
+@interface AggregateQuery : NSObject
+/// `init` unavailable to enforce nonnull fields, see the `make` class method.
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)makeWithType:(AggregateType)type field:(nullable NSString *)field;
+@property(nonatomic, assign) AggregateType type;
+@property(nonatomic, copy, nullable) NSString *field;
+@end
+
+@interface AggregateQueryResponse : NSObject
+/// `init` unavailable to enforce nonnull fields, see the `make` class method.
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)makeWithType:(AggregateType)type
+                       field:(nullable NSString *)field
+                       value:(nullable NSNumber *)value;
+@property(nonatomic, assign) AggregateType type;
+@property(nonatomic, copy, nullable) NSString *field;
+@property(nonatomic, strong, nullable) NSNumber *value;
+@end
+
 /// The codec used by FirebaseFirestoreHostApi.
 NSObject<FlutterMessageCodec> *FirebaseFirestoreHostApiGetCodec(void);
 
@@ -318,12 +388,14 @@ NSObject<FlutterMessageCodec> *FirebaseFirestoreHostApiGetCodec(void);
            parameters:(PigeonQueryParameters *)parameters
               options:(PigeonGetOptions *)options
            completion:(void (^)(PigeonQuerySnapshot *_Nullable, FlutterError *_Nullable))completion;
-- (void)aggregateQueryCountApp:(FirestorePigeonFirebaseApp *)app
-                          path:(NSString *)path
-                    parameters:(PigeonQueryParameters *)parameters
-                        source:(AggregateSource)source
-             isCollectionGroup:(NSNumber *)isCollectionGroup
-                    completion:(void (^)(NSNumber *_Nullable, FlutterError *_Nullable))completion;
+- (void)aggregateQueryApp:(FirestorePigeonFirebaseApp *)app
+                     path:(NSString *)path
+               parameters:(PigeonQueryParameters *)parameters
+                   source:(AggregateSource)source
+                  queries:(NSArray<AggregateQuery *> *)queries
+        isCollectionGroup:(NSNumber *)isCollectionGroup
+               completion:(void (^)(NSArray<AggregateQueryResponse *> *_Nullable,
+                                    FlutterError *_Nullable))completion;
 - (void)writeBatchCommitApp:(FirestorePigeonFirebaseApp *)app
                      writes:(NSArray<PigeonTransactionCommand *> *)writes
                  completion:(void (^)(FlutterError *_Nullable))completion;
@@ -333,12 +405,17 @@ NSObject<FlutterMessageCodec> *FirebaseFirestoreHostApiGetCodec(void);
                 parameters:(PigeonQueryParameters *)parameters
                    options:(PigeonGetOptions *)options
     includeMetadataChanges:(NSNumber *)includeMetadataChanges
+                    source:(ListenSource)source
                 completion:(void (^)(NSString *_Nullable, FlutterError *_Nullable))completion;
 - (void)documentReferenceSnapshotApp:(FirestorePigeonFirebaseApp *)app
                           parameters:(DocumentReferenceRequest *)parameters
               includeMetadataChanges:(NSNumber *)includeMetadataChanges
+                              source:(ListenSource)source
                           completion:
                               (void (^)(NSString *_Nullable, FlutterError *_Nullable))completion;
+- (void)persistenceCacheIndexManagerRequestApp:(FirestorePigeonFirebaseApp *)app
+                                       request:(PersistenceCacheIndexManagerRequest)request
+                                    completion:(void (^)(FlutterError *_Nullable))completion;
 @end
 
 extern void FirebaseFirestoreHostApiSetup(id<FlutterBinaryMessenger> binaryMessenger,

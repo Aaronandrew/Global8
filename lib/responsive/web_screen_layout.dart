@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:global8/utils/colors.dart';
 import 'package:global8/utils/global_variable.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WebScreenLayout extends StatefulWidget {
-  const WebScreenLayout({Key? key}) : super(key: key);
+class WebScreenLayout extends ConsumerStatefulWidget {
+  const WebScreenLayout({super.key});
 
   @override
-  State<WebScreenLayout> createState() => _WebScreenLayoutState();
+  ConsumerState<WebScreenLayout> createState() => _WebScreenLayoutState();
 }
 
-class _WebScreenLayoutState extends State<WebScreenLayout> {
+class _WebScreenLayoutState extends ConsumerState<WebScreenLayout> {
   int _page = 0;
   late PageController pageController; // for tabs animation
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController();
+    //pageController = PageController();
   }
 
   @override
@@ -33,7 +33,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
   }
 
   void navigationTapped(int page) {
-    //Animating Page
+    // Animating Page
     pageController.jumpToPage(page);
     setState(() {
       _page = page;
@@ -42,48 +42,48 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final Color background = isDarkMode ? mobileBackgroundColorDark : mobileBackgroundColorLight;
+    final Color primary = isDarkMode ? primaryColorDark : primaryColorLight;
+    final Color secondary = isDarkMode ? secondaryColorDark : secondaryColorLight;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: mobileBackgroundColor,
+        backgroundColor: background,
         centerTitle: false,
-        /*title: SvgPicture.asset(
-          'assets/ic_instagram.svg',
-          color: primaryColor,
-          height: 32,
-        ),*/
         actions: [
           IconButton(
             icon: Icon(
               Icons.home,
-              color: _page == 0 ? primaryColor : secondaryColor,
+              color: _page == 0 ? primary : secondary,
             ),
             onPressed: () => navigationTapped(0),
           ),
           IconButton(
             icon: Icon(
               Icons.search,
-              color: _page == 1 ? primaryColor : secondaryColor,
+              color: _page == 1 ? primary : secondary,
             ),
             onPressed: () => navigationTapped(1),
           ),
           IconButton(
             icon: Icon(
               Icons.add_a_photo,
-              color: _page == 2 ? primaryColor : secondaryColor,
+              color: _page == 2 ? primary : secondary,
             ),
             onPressed: () => navigationTapped(2),
           ),
           IconButton(
             icon: Icon(
               Icons.favorite,
-              color: _page == 3 ? primaryColor : secondaryColor,
+              color: _page == 3 ? primary : secondary,
             ),
             onPressed: () => navigationTapped(3),
           ),
           IconButton(
             icon: Icon(
               Icons.person,
-              color: _page == 4 ? primaryColor : secondaryColor,
+              color: _page == 4 ? primary : secondary,
             ),
             onPressed: () => navigationTapped(4),
           ),

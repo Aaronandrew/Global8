@@ -4,49 +4,57 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>FirebaseFirestoreInternal_Privacy.bundle/Info.plist</key>
+		<data>
+		vLZ9YxxqSP5ic/AbzLKk12h5irU=
+		</data>
+		<key>FirebaseFirestoreInternal_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		WXQUJr75eMRgiVnLGyf8Gr3uLUU=
+		</data>
 		<key>Headers/FIRAggregateField.h</key>
 		<data>
-		XQdzKjU0Z0U7eZhMTeOvL72ZRIk=
+		0LW8pFKyi4kQ1EpYtZXW3GjTjJ0=
 		</data>
 		<key>Headers/FIRAggregateQuery.h</key>
 		<data>
-		epQ/UOlma2NA0mXhHSOlZbhx8UI=
+		nRZWBYQbOggM+r0gwEt7eck7J3c=
 		</data>
 		<key>Headers/FIRAggregateQuerySnapshot.h</key>
 		<data>
-		LLTPdcJyeXbxg7yWBnnP4XKehXQ=
+		4AtLCoLLuaYqkgR5/G+eZg8jBn4=
 		</data>
 		<key>Headers/FIRAggregateSource.h</key>
 		<data>
-		UHpky1sMwcjVpcpphAlA9Wn+BBo=
+		LlVa11Kh64mApDnBwYVx54SZtUQ=
 		</data>
 		<key>Headers/FIRCollectionReference.h</key>
 		<data>
-		7Qvb+ydvgrXFKS5Jc8wRRP10AUc=
+		nvwBqdiTr+okLQWX/2edbm25sIQ=
 		</data>
 		<key>Headers/FIRDocumentChange.h</key>
 		<data>
-		zLgSVEwXCDlVXbnNQEm9+4sDflw=
+		Z5wH+9kygCY1dWYb42uOSVk7fKI=
 		</data>
 		<key>Headers/FIRDocumentReference.h</key>
 		<data>
-		gAc3T/qc9XNkYHvqIrdGsrljIlQ=
+		jYd3QnQL96HA9D+2df1bc2ZpG4s=
 		</data>
 		<key>Headers/FIRDocumentSnapshot.h</key>
 		<data>
-		LEvdATBd91yNRaIZDLbtNCEMyeU=
+		MrAukDM+XZ9JcScTIn+cHjXJZW0=
 		</data>
 		<key>Headers/FIRFieldPath.h</key>
 		<data>
-		4otM/1WozqldWq9yi8t9lR94m1c=
+		FXD8/va2xyZeiPgoWtehvqd+ZnQ=
 		</data>
 		<key>Headers/FIRFieldValue.h</key>
 		<data>
-		ErNkviFr+lJKW7LiE11ua7nWdRI=
+		7zOFqr23MaB5tPPIyFwIVudJQmI=
 		</data>
 		<key>Headers/FIRFilter.h</key>
 		<data>
-		opFklJNeGIdIRuz9yXkAGKzvb3Y=
+		pkHEoEB25YATrjRrfMbeiLeNg0o=
 		</data>
 		<key>Headers/FIRFirestore.h</key>
 		<data>
@@ -66,7 +74,7 @@
 		</data>
 		<key>Headers/FIRGeoPoint.h</key>
 		<data>
-		v+TkvD7XC+fYx7nLt2epRGjO6WE=
+		DQqhFBv4usgvZadrTcX4jiOZlC4=
 		</data>
 		<key>Headers/FIRListenerRegistration.h</key>
 		<data>
@@ -74,11 +82,11 @@
 		</data>
 		<key>Headers/FIRLoadBundleTask.h</key>
 		<data>
-		7rUk4RB70DUMdU5LkQ8RIrVm2Rg=
+		MRnjVBMz2ZcUjZ+0bxa7TjQsocQ=
 		</data>
 		<key>Headers/FIRLocalCacheSettings.h</key>
 		<data>
-		utiSN96ikAE/9+hFCXNgi6PjMmM=
+		fTXx+5mRdkeXw/bssBNSdm6xVgE=
 		</data>
 		<key>Headers/FIRPersistentCacheIndexManager.h</key>
 		<data>
@@ -86,19 +94,19 @@
 		</data>
 		<key>Headers/FIRQuery.h</key>
 		<data>
-		weMrnQRTReEfhjQT2yqmzuNAL2w=
+		amVw+vDnJ8XAT/hswrNO9LvEa5M=
 		</data>
 		<key>Headers/FIRQuerySnapshot.h</key>
 		<data>
-		4hU88j5uyoj0t4/Ka608V9G+zrA=
+		pmzhI26u0KiWXw21qLglCQR7Tpc=
+		</data>
+		<key>Headers/FIRSnapshotListenOptions.h</key>
+		<data>
+		DC1PZzG+w7fSIyaxbe7N3LPRA0c=
 		</data>
 		<key>Headers/FIRSnapshotMetadata.h</key>
 		<data>
-		sT+RLj6Zq278VtP8pCRhx7eTpUA=
-		</data>
-		<key>Headers/FIRTimestamp.h</key>
-		<data>
-		hP3FmCYW5wt9zBtEzEFSO/hHl4k=
+		Loqqck/ipQwVXghqexawj1xqu90=
 		</data>
 		<key>Headers/FIRTransaction.h</key>
 		<data>
@@ -108,21 +116,25 @@
 		<data>
 		ddC+0yQSPrlRh0ZA5leQwHvLqok=
 		</data>
+		<key>Headers/FIRVectorValue.h</key>
+		<data>
+		TGPEYlvAIRUVvVwniboPgyh5d2g=
+		</data>
 		<key>Headers/FIRWriteBatch.h</key>
 		<data>
 		sR91hk5jQZAYdZNc1inldcm4q40=
 		</data>
 		<key>Headers/FirebaseFirestore.h</key>
 		<data>
-		zMsCHn+lB3oCQl57OkgT70swpfA=
+		D8RDHiJUEeEamWNFVtIGAqlS/z4=
 		</data>
 		<key>Headers/FirebaseFirestoreInternal-umbrella.h</key>
 		<data>
-		gThBWXrJGoNZcMfvIiK56oXyguM=
+		HPnhBFrD5q1SLMqG5DHrlaqU3kk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		p5YakS4T8b2w+g9/mWqYIOG8C40=
+		cOC2GpcEZc3o0BrbP3/gXhCKbIY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -131,81 +143,95 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>FirebaseFirestoreInternal_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ruiRteWeBGxjI57SdqKJ+mf1NSP/RFEetxCZZ9uxMPI=
+			</data>
+		</dict>
+		<key>FirebaseFirestoreInternal_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			z7s8T3ambVNpi66R9xEMAPIUjm5vE619MlkpCbwBDlE=
+			</data>
+		</dict>
 		<key>Headers/FIRAggregateField.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			S1Iv66gyzzao1yYMc/Pr1Wm7Vy6yfjshWNtmr/0vwFE=
+			cIj0WXLtHCXE6oW9HcM1SUspXpv8z/42QC6pzVmatV0=
 			</data>
 		</dict>
 		<key>Headers/FIRAggregateQuery.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l736LUXxQrsZX5KlTf7tijKwuG5iERYGlYVOhZv18Kc=
+			/kW0olnbuYvibRn8cz5G9j1j9HHqQx3WkK2H4JMvt8g=
 			</data>
 		</dict>
 		<key>Headers/FIRAggregateQuerySnapshot.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CN3Nqs6tuxA5I8B2YA99l6hukBt5HVreWBMxLas1ht4=
+			I6hVb3KBdBkJFkQ/PkxGN3j+f8TwSHivFOSVWcC0sPE=
 			</data>
 		</dict>
 		<key>Headers/FIRAggregateSource.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uOaPGk6K3jAPuTjMoowa0s9eV+y1S6KzSet1Sof2ie0=
+			AdxxnkkVlnIBHxhP/IvCSvWXm+cJeKsPuRp3aIVoSro=
 			</data>
 		</dict>
 		<key>Headers/FIRCollectionReference.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mxRdm71mQX14Y0nD6VYk3MViIwKYgZtDXUvKRKWR93A=
+			lj5E74kQZOPJk4w4NIpei+e6q/p8QfTkxYqYJk4bJc4=
 			</data>
 		</dict>
 		<key>Headers/FIRDocumentChange.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t0JEcfIosxOI8COGzYRuD254YigjU9oUsVyN+dO7xLk=
+			V+KurXrFgExtvZEC9flqqBLwx5OItNTeGHqRBwVXyoE=
 			</data>
 		</dict>
 		<key>Headers/FIRDocumentReference.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cf+zSqsoYmzn/B7AXBubp4mp2WPNqfQkNl+4Z2Xf/dY=
+			cPw0PIIyln99F8KyIUnaD0oPZUG0killU+58g9J77V0=
 			</data>
 		</dict>
 		<key>Headers/FIRDocumentSnapshot.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u6h3R6qIgcvcx0K4VLjqFayM2TKC7JUObl2EX2gzx04=
+			yilm5bCjcA8PqwgZJghIgJx/Pw0j6qsA8upSGztFJUw=
 			</data>
 		</dict>
 		<key>Headers/FIRFieldPath.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E6itVJDm1ZpCd/p0us1k+lwQ9Q4aSAcb+THCI+oR2Rs=
+			YfCZNY3mIJHdhpXcPWG1x8vjKtoudwocdecRe8S6PaY=
 			</data>
 		</dict>
 		<key>Headers/FIRFieldValue.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HYfSV6AgC+QxW77VG3PRmT0Gc4wH0TUkvE6d2upq9nw=
+			iIq25h1WAHfWQaWLASTzKSNQcHQ657xA3/Omrnt2vVw=
 			</data>
 		</dict>
 		<key>Headers/FIRFilter.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BIbDS/m01M3gKJpLOM3Lf1qzIOGCT8C0yOQ1QkPA38U=
+			tGhAMyFNThPACvD0Zk0+CC6p64osPk0AECZixqKZRbc=
 			</data>
 		</dict>
 		<key>Headers/FIRFirestore.h</key>
@@ -240,7 +266,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1UlN00oboAZ1jCWfAsYGKJgbMDOEfIJN0D+HRWZF6Do=
+			523AT43k9D7Vom4A7wDoxr2tp/tLltHPsadupRfbiVY=
 			</data>
 		</dict>
 		<key>Headers/FIRListenerRegistration.h</key>
@@ -254,14 +280,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YsXzvgtEzrq/fDft8AN7x/xruNzVNlrdrQVlZBi7Cb0=
+			oC3AOQqDNUn2RLylcIM/1FuCBmcdS6ITI8eG49seA6A=
 			</data>
 		</dict>
 		<key>Headers/FIRLocalCacheSettings.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t+2IeV8arUYSP5qQHiKIuruBcpLQmTDXKhyySsYqFZM=
+			iTSDUERvrRPoQh4+s6cNnNkiZ7/ISrOcYTMhIEHpZBk=
 			</data>
 		</dict>
 		<key>Headers/FIRPersistentCacheIndexManager.h</key>
@@ -275,28 +301,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			38ADPOnPCvw/psbqJp8XQLCLLXvDCUtcsnb+cLBy3NM=
+			5LLRhBdFm+CPA7dx6pZpFvJPinVNjz4bBw5gPLWfPFg=
 			</data>
 		</dict>
 		<key>Headers/FIRQuerySnapshot.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6At8yzx2G7omO5itWiQI9h4SWoiYpX06l6H6GcTgOZ4=
+			sRBLXkQDiY6aZk94zvLm1XSfFkUxS7OOYMgz5Vfro3c=
+			</data>
+		</dict>
+		<key>Headers/FIRSnapshotListenOptions.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dzdP1AgarPbsVlQJTg6SVK/klN63cPWGSbhgkKDvw8w=
 			</data>
 		</dict>
 		<key>Headers/FIRSnapshotMetadata.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JVUsIhhwTjF7jb1hhFMgvWXdlyvrZwyrRPxXqk0TLEQ=
-			</data>
-		</dict>
-		<key>Headers/FIRTimestamp.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Dhuct3YLwSPeYF5W68HYO8JMNUATav/JIgiEF2nakb0=
+			YoA1waQ/wO/8nMGnl65FPJcCiEqnpCregbgCn2xL+HY=
 			</data>
 		</dict>
 		<key>Headers/FIRTransaction.h</key>
@@ -313,6 +339,13 @@
 			ms6FqxXaJFP8X/G2ars5BJf+B/h31G0dYLSEeEKBb3A=
 			</data>
 		</dict>
+		<key>Headers/FIRVectorValue.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0fFEa2F648R9japPkGHZ/7nN7x4YRZLWFSj5wURhVzE=
+			</data>
+		</dict>
 		<key>Headers/FIRWriteBatch.h</key>
 		<dict>
 			<key>hash2</key>
@@ -324,14 +357,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EoW0J5gTKHPL+dK7P+vB5VlrGCyOpQYz34gn9Kx2HdU=
+			Hr6FPX835fhkrOD35N2Sau8AkawIvWhdtU9HqNFhBd0=
 			</data>
 		</dict>
 		<key>Headers/FirebaseFirestoreInternal-umbrella.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k3mrim0OS3dylIXVLeMgg0lLXbBycCgzQaWTG1tuR6U=
+			JDenVbUkw/RoUuano2WzwkwHV1KxnH+LwQyXtpCtpQg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

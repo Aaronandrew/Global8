@@ -30,31 +30,35 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.13.0
+  firebase_core: ^3.6.0
+  firebase_messaging: ^15.1.6
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  cloud_firestore: ^4.7.1
-  firebase_auth: ^4.6.1
+  cloud_firestore: ^5.4.4
+  firebase_auth: ^5.3.1
+  flutter_riverpod: ^2.0.0
+  firebase_storage: ^12.3.4
 
-  firebase_storage: ^11.2.2
-  provider: ^6.0.1
-  uuid: ^3.0.5
+  uuid: ^4.5.1
   flutter_svg: ^2.0.6
   image_picker: ^1.0.4
-  intl: ^0.17.0
+  video_player: ^2.5.0
+  intl: ^0.19.0
   sliding_up_panel: ^2.0.0+1
   flutter_glow: ^0.3.0
-  avatar_glow: ^2.0.2
+  avatar_glow: ^3.0.1
   flutter_staggered_grid_view: ^0.7.0
-
+  google_maps_flutter: ^2.1.1
+  url_launcher: ^6.0.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+ # Use a stable version without Linux dependency
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -62,7 +66,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -70,12 +74,13 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assests/images/
+    - assets/images/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

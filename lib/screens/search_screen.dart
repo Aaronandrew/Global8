@@ -1,31 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:global8/screens/profile_screen.dart';
 import 'package:global8/utils/colors.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:global8/providers/theme_provider.dart';
 
+import 'comments_screen.dart';
+import 'full_post_screen.dart'; // Import your theme provider
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+class SearchScreen extends ConsumerStatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  ConsumerState<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController searchController = TextEditingController();
   bool isShowUsers = false;
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: mobileBackgroundColor,
+      // Use dynamic appBar color
         title: Form(
           child: TextFormField(
             controller: searchController,
-            decoration:
-            const InputDecoration(labelText: 'Search for a user...'),
+            style: TextStyle(), // Dynamic text color
+            decoration: InputDecoration(
+              labelText: 'Search for a user...',
+              labelStyle: TextStyle(), // Dynamic label color
+            ),
             onFieldSubmitted: (String _) {
               setState(() {
                 isShowUsers = true;
@@ -69,6 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   title: Text(
                     (snapshot.data! as dynamic).docs[index]['username'],
+                    style: TextStyle(), // Dynamic text color
                   ),
                 ),
               );
@@ -88,18 +99,60 @@ class _SearchScreenState extends State<SearchScreen> {
             );
           }
 
-          return MasonryGridView.count(
-            crossAxisCount: 3,
-            itemCount: (snapshot.data! as dynamic).docs.length,
-            itemBuilder: (context, index) => Image.network(
-              (snapshot.data! as dynamic).docs[index]['postUrl'],
-              fit: BoxFit.cover,
+          return GridView.builder(
+            padding: const EdgeInsets.all(8),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: 1, // Ensures a square shape
             ),
-            mainAxisSpacing: 8.0,
-            crossAxisSpacing: 8.0,
+            itemCount: (snapshot.data! as dynamic).docs.length,
+            itemBuilder: (context, index) {
+              final post = (snapshot.data! as dynamic).docs[index];
+              final currentUser = FirebaseAuth.instance.currentUser;
+
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FullPostScreen(
+                        postData: post,
+                        isOwner: post['uid'] == currentUser?.uid,
+                        isLiked: (post['likes'] ?? []).contains(currentUser?.uid),
+                        likeCount: (post['likes'] ?? []).length,
+                        commentCount: post.data().containsKey('commentCount') ? post['commentCount'] : 0,
+                        onLikePressed: () {
+                          // Like logic
+                        },
+                        onDeletePressed: () {
+                          // Delete logic
+                        },
+                        onCommentPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CommentsScreen(postId: post['postId']),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  post['postUrl'],
+                  fit: BoxFit.cover,
+                ),
+              );
+
+            },
           );
+
         },
       ),
     );
   }
+
 }

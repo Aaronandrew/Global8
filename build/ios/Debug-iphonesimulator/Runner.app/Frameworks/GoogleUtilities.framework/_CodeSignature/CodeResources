@@ -4,13 +4,36 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<data>
+		Hi9OWU9KhUtGLAXUI60at+WRmOM=
+		</data>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		9Dge7JFNlx7Vk430tsjNsK3d0Ng=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		TCsiVuUPA6wUaGkkq9bRgOYbYmM=
+		KRiPzC30AdqWTZIBxNEmE9UXChg=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KTk8BimgSuzyJ1E1QVwpHOc2tlFhzTqNj5ROj0e7ld4=
+			</data>
+		</dict>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+Btc+PBDZicS7KnpeFdnJkzxkAJf5720l3cpbAaN5Tw=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^.*</key>

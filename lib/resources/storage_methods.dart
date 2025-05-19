@@ -1,31 +1,75 @@
+import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
+import 'package:image_picker/image_picker.dart';  // For XFile
 
 class StorageMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  // adding image to firebase storage
-  Future<String> uploadImageToStorage(String childName, Uint8List file, bool isPost) async {
-    // creating location to our firebase storage
+  // Upload image from raw bytes (Uint8List)
+  Future<String> uploadImageToStorage(String childPath, Uint8List file, bool isPost) async {
+    try {
+      User? user = _auth.currentUser;
 
-    Reference ref =
-    _storage.ref().child(childName).child(_auth.currentUser!.uid);
-    if(isPost) {
-      String id = const Uuid().v1();
-      ref = ref.child(id);
+      if (user == null) {
+        throw FirebaseAuthException(
+          code: "not-authenticated",
+          message: "User is not logged in",
+        );
+      }
+
+      Reference ref = _storage.ref().child(childPath).child(user.uid);
+      if (isPost) {
+        String id = const Uuid().v1();
+        ref = ref.child(id);
+      }
+
+      UploadTask uploadTask = ref.putData(file);
+      TaskSnapshot snapshot = await uploadTask;
+      String downloadUrl = await snapshot.ref.getDownloadURL();
+
+      return downloadUrl;
+    } catch (e) {
+      debugPrint("Error in uploadImageToStorage: $e");
+      return Future.error(e.toString());
     }
+  }
 
-    // putting in uint8list format -> Upload task like a future but not future
-    UploadTask uploadTask = ref.putData(
-        file
-    );
+  // Upload video from XFile (picked video file)
+  Future<String> uploadVideoToStorage(String childPath, XFile file, bool isPost) async {
+    try {
+      User? user = _auth.currentUser;
 
-    TaskSnapshot snapshot = await uploadTask;
-    String downloadUrl = await snapshot.ref.getDownloadURL();
-    return downloadUrl;
+      if (user == null) {
+        throw FirebaseAuthException(
+          code: "not-authenticated",
+          message: "User is not logged in",
+        );
+      }
+
+      Reference ref = _storage.ref().child(childPath).child(user.uid);
+      if (isPost) {
+        String id = const Uuid().v1();
+        ref = ref.child(id);
+      }
+
+      // Upload file from path (XFile provides path to the local file)
+      UploadTask uploadTask = ref.putFile(
+        File(file.path),
+        SettableMetadata(contentType: 'video/mp4'), // Set MIME type accordingly
+      );
+
+      TaskSnapshot snapshot = await uploadTask;
+      String downloadUrl = await snapshot.ref.getDownloadURL();
+
+      return downloadUrl;
+    } catch (e) {
+      debugPrint("Error in uploadVideoToStorage: $e");
+      return Future.error(e.toString());
+    }
   }
 }

@@ -3,15 +3,15 @@ import 'package:intl/intl.dart';
 
 class CommentCard extends StatelessWidget {
   final snap;
-  const CommentCard({Key? key, required this.snap}) : super(key: key);
+  const CommentCard({super.key, required this.snap});
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Row(
         children: [
+          // Profile Picture
           CircleAvatar(
             backgroundImage: NetworkImage(
               snap.data()['profilePic'],
@@ -25,15 +25,23 @@ class CommentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // User's Name and Comment Text
                   RichText(
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: snap.data()['name'],
-                            style: const TextStyle(fontWeight: FontWeight.bold,)
+                          text: snap.data()['name'],
+                          style: const TextStyle(
+                            color: Colors.deepPurpleAccent,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         TextSpan(
                           text: ' ${snap.data()['text']}',
+                          style: const TextStyle(
+                            color: Colors.deepPurpleAccent,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ],
                     ),
@@ -45,20 +53,30 @@ class CommentCard extends StatelessWidget {
                         snap.data()['datePublished'].toDate(),
                       ),
                       style: const TextStyle(
-                        fontSize: 12, fontWeight: FontWeight.w400,),
+                        color: Colors.purpleAccent,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           ),
-          Container(
+          // Like Button
+          Padding(
             padding: const EdgeInsets.all(8),
-            child: const Icon(
-              Icons.favorite,
-              size: 16,
+            child: IconButton(
+              onPressed: () {
+                // Handle like button press (add your like functionality here)
+              },
+              icon: const Icon(
+                Icons.favorite_border, // Use an outline icon for the like button
+                size: 18,
+                color: Colors.deepPurpleAccent,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -503,13 +503,50 @@ typedef void (^GTMSessionFetcherRetryResponse)(BOOL shouldRetry);
 typedef void (^GTMSessionFetcherRetryBlock)(BOOL suggestedWillRetry, NSError *_Nullable error,
                                             GTMSessionFetcherRetryResponse response);
 
-API_AVAILABLE(ios(10.0), macosx(10.12), tvos(10.0), watchos(6.0))
 typedef void (^GTMSessionFetcherMetricsCollectionBlock)(NSURLSessionTaskMetrics *metrics);
 
 typedef void (^GTMSessionFetcherTestResponse)(NSHTTPURLResponse *_Nullable response,
                                               NSData *_Nullable data, NSError *_Nullable error);
 typedef void (^GTMSessionFetcherTestBlock)(GTMSessionFetcher *fetcherToTest,
                                            GTMSessionFetcherTestResponse testResponse);
+
+// Provides access to a user-agent string calculated on demand.
+//
+// Methods and properties on this protocol must be thread-safe. In addition,
+// |userAgentCache| must not block the calling thread to perform I/O.
+@protocol GTMUserAgentProvider <NSObject>
+
+// Non-nil user-agent string if |userAgent| has already been cached and is safe
+// to read without blocking the calling thread, |nil| otherwise.
+@property(atomic, readonly, nullable, copy) NSString *cachedUserAgent;
+
+// The user-agent string, calculated on demand. This might block the calling thread if
+// |userAgentCached| is NO.
+@property(atomic, readonly, copy) NSString *userAgent;
+
+@end
+
+/// Provides a User-Agent string that is known at the time the fetcher is created.
+__attribute__((objc_subclassing_restricted))
+@interface GTMUserAgentStringProvider : NSObject<GTMUserAgentProvider>
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithUserAgentString:(NSString *)userAgentString NS_DESIGNATED_INITIALIZER;
+
+@end
+
+// Calculates the User-Agent string on demand using |GTMFetcherStandardUserAgentString()| given an
+// optional bundle.
+__attribute__((objc_subclassing_restricted))
+@interface GTMStandardUserAgentProvider : NSObject<GTMUserAgentProvider>
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithBundle:(nullable NSBundle *)bundle NS_DESIGNATED_INITIALIZER;
+
+@end
 
 void GTMSessionFetcherAssertValidSelector(id _Nullable obj, SEL _Nullable sel, ...);
 
@@ -567,6 +604,13 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
 #endif
 
 // Completion handler passed to -[GTMFetcherDecoratorProtocol fetcherWillStart:completionHandler:].
+
+// TODO(https://github.com/google/gtm-session-fetcher/issues/398): Uncomment this when the next
+// major version bump happens, since this is an API breaking change for Swift clients.
+//
+// typedef void (^GTMFetcherDecoratorFetcherWillStartCompletionHandler)(NSURLRequest *_Nullable_result,
+//                                                                      NSError *_Nullable);
+
 typedef void (^GTMFetcherDecoratorFetcherWillStartCompletionHandler)(NSURLRequest *_Nullable,
                                                                      NSError *_Nullable);
 
@@ -821,9 +865,16 @@ __deprecated_msg("implement GTMSessionFetcherAuthorizer instead")
 // NSURLSessionTaskPriorityDefault, or NSURLSessionTaskPriorityHigh.
 @property(atomic, assign) float taskPriority;
 
+// An optional provider to calculate the User-Agent string on demand. If non-nil and
+// an HTTP header field for User-Agent is not set, this is queried before sending out
+// the network request for the User-Agent string.
+@property(atomic, strong, nullable) id<GTMUserAgentProvider> userAgentProvider;
+
 // The fetcher encodes information used to resume a session in the session identifier.
 // This method, intended for internal use returns the encoded information.  The sessionUserInfo
 // dictionary is stored as identifier metadata.
+// NOTE: This type is a lie and could be an issue for Swift. The values for private keys (prefixed
+// with an underscore) aren't always strings; but changing the type is a breaking change.
 - (nullable NSDictionary<NSString *, NSString *> *)sessionIdentifierMetadata;
 
 #if TARGET_OS_IPHONE && !TARGET_OS_WATCH
@@ -1027,9 +1078,7 @@ __deprecated_msg("implement GTMSessionFetcherAuthorizer instead")
 // The optional block for collecting the metrics of the present session.
 //
 // This is called on the callback queue.
-@property(atomic, copy, nullable)
-    GTMSessionFetcherMetricsCollectionBlock metricsCollectionBlock API_AVAILABLE(
-        ios(10.0), macosx(10.12), tvos(10.0), watchos(6.0));
+@property(atomic, copy, nullable) GTMSessionFetcherMetricsCollectionBlock metricsCollectionBlock;
 
 // Retry intervals must be strictly less than maxRetryInterval, else
 // they will be limited to maxRetryInterval and no further retries will

@@ -6,11 +6,7 @@
 	<dict>
 		<key>Headers/FIRAppCheckInterop.h</key>
 		<data>
-		ArtWjMctu/kUnhE2Spb5f5H/NdU=
-		</data>
-		<key>Headers/FIRAppCheckProtocol.h</key>
-		<data>
-		6cD24frvGtJ0pQkEbPDw8SrKh/w=
+		i4P3VfiVwHf/7YyJH4jhtJYXxW0=
 		</data>
 		<key>Headers/FIRAppCheckTokenResultInterop.h</key>
 		<data>
@@ -18,15 +14,15 @@
 		</data>
 		<key>Headers/FirebaseAppCheckInterop-umbrella.h</key>
 		<data>
-		JtPIv5oxj17Yr+fnkFZEnQn/KgI=
+		BIMUt04wTKGt/Ad4eFJbb0JFuWI=
 		</data>
 		<key>Headers/FirebaseAppCheckInterop.h</key>
 		<data>
-		4eBwqw6ARXvbgptPySByzgIzQ/k=
+		3s+txujPZk/jjX1DUTw2YtwWKq8=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5O1u8ByNe/I8+8Wd1clGUe3IwrQ=
+		kFik8F5+PphIgJdwlERuAVFESy8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -37,32 +33,13 @@
 	<dict>
 		<key>Headers/FIRAppCheckInterop.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ArtWjMctu/kUnhE2Spb5f5H/NdU=
-			</data>
 			<key>hash2</key>
 			<data>
-			lqyjwMs5fbRbmoQd91XB9IOBIqM6HuxjOQBtV81cigM=
-			</data>
-		</dict>
-		<key>Headers/FIRAppCheckProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			6cD24frvGtJ0pQkEbPDw8SrKh/w=
-			</data>
-			<key>hash2</key>
-			<data>
-			IYZ44gds65zIwMSW6bdnH8rlTWK9nc9Jp/HbkN8GI/4=
+			9H3bC5Z5adEjOtzsWPfO71dJraOxxHku8QGGWFYzbB0=
 			</data>
 		</dict>
 		<key>Headers/FIRAppCheckTokenResultInterop.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xVWF6LnYC4mr+6+X7odpOGjF7w4=
-			</data>
 			<key>hash2</key>
 			<data>
 			VeCsPwt5xPDpzdYUz3Fltl3iaUZ+Dh4wJwW7xsbbx3A=
@@ -70,32 +47,20 @@
 		</dict>
 		<key>Headers/FirebaseAppCheckInterop-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			JtPIv5oxj17Yr+fnkFZEnQn/KgI=
-			</data>
 			<key>hash2</key>
 			<data>
-			2qbA21frf+mmswWvnMh9zdhzYnCzEFHHs3KxCDQDA/E=
+			54Nng2RnfqvhmU2ve/Nrwu2aRQe2g9ENKr0e/lb+0UQ=
 			</data>
 		</dict>
 		<key>Headers/FirebaseAppCheckInterop.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4eBwqw6ARXvbgptPySByzgIzQ/k=
-			</data>
 			<key>hash2</key>
 			<data>
-			Vj9HfO3aYpmAZkBz1p1QC2YoPCy0C/IcHxBQXvcZfI4=
+			lFNyYQgNRjSd5ywQoOS6WprWX+RJh4BRvUSxOJM/1uY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			w9L0BFybTP1Xhk/EOcOicZUdfkY=
-			</data>
 			<key>hash2</key>
 			<data>
 			/Zv+D2gmO7hwGLJmy0xozuyd0uR3cgegoBkDGsGrMww=

@@ -1,125 +1,116 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:global8/utils/colors.dart';
-import 'package:global8/utils/global_variable.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:global8/providers/navigation_provider.dart';
+import 'package:global8/providers/user_provider.dart'  as user_provider;
 
-class MobileScreenLayout extends StatefulWidget {
-  const MobileScreenLayout({Key? key}) : super(key: key);
+import 'package:global8/screens/Stories_screen.dart';
+import 'package:global8/screens/feed_screen.dart';
+import 'package:global8/screens/profile_screen.dart';
 
+
+
+class MobileScreenLayout extends ConsumerStatefulWidget {
+  const MobileScreenLayout({super.key});
 
   @override
-  State<MobileScreenLayout> createState() => _MobileScreenLayoutState();
+  ConsumerState<MobileScreenLayout> createState() => _MobileScreenLayoutState();
 }
 
-class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  int _page = 0;
-  late PageController pageController; // for tabs animation
+class _MobileScreenLayoutState extends ConsumerState<MobileScreenLayout> {
+  late PageController pageController;
 
-
+  @override
   @override
   void initState() {
     super.initState();
     pageController = PageController();
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    pageController.dispose();
-  }
-
-  void onPageChanged(int page) {
-    setState(() {
-      _page = page;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fetchUserData(); // ✅ safe
     });
   }
 
-  void navigationTapped(int page) {
-    //Animating Page
-    pageController.jumpToPage(page);
+
+  Future<void> fetchUserData() async {
+    final user = ref.read(user_provider.userProvider); // Sync read is fine here
+    if (user != null && mounted) {
+      ref.read(navigationProvider.notifier).updateUserData(
+        username: user.username ?? 'Guest',
+        profilePic: user.photoUrl ?? '', uid: '',
+      );
+    }
   }
+
+
+  void onPageChanged(int page) {
+    ref.read(navigationProvider.notifier).updatePage(page, context);
+  }
+
+  void navigationTapped(int page) {
+    ref.read(navigationProvider.notifier).updatePage(page, context);
+    pageController.animateToPage(page, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+    final navState = ref.watch(navigationProvider);
+    final user = ref.watch(user_provider.userProvider); // Watch for user updates
+
     return Scaffold(
+
       body: PageView(
         controller: pageController,
         onPageChanged: onPageChanged,
-        children: homeScreenItems,
+        children: [
+          ProfileScreen(uid: user?.uid ?? ''), // Profile screen
+          FeedScreen(), // Feed screen
+          StoriesScreen(), // Stories screen
+        ],
       ),
       bottomNavigationBar: Container(
-        color: Color(0xFFB2B1B1),
-        height: 80,
+        color: Colors.deepPurple,
+        height: 90,
         alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(0.0),
         child: CupertinoTabBar(
-          backgroundColor: Color(0xFFB2B1B1),
+          backgroundColor: Colors.deepPurple,
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Align(
-
-                alignment: Alignment.bottomCenter,
-                child: SvgPicture.asset(
-                  'assests/images/Vector.svg',
-                  color: (_page == 0) ? primaryColor : secondaryColor,
-                  alignment: Alignment.bottomCenter,
-                  
-
-                ),
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Align(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.add_circle,
-                  color: (_page == 1) ? primaryColor : secondaryColor,
-                ),
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Align(
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  'assests/images/globe2.svg',
-                  color: (_page == 2) ? primaryColor : secondaryColor,
-                ),
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Align(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.search_rounded,
-                  color: (_page == 3) ? primaryColor : secondaryColor,
-                ),
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Align(
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  'assests/images/paragraph.svg',
-                  color: (_page == 4) ? primaryColor : secondaryColor,
-                ),
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
+            _buildNavItem('assets/images/Vector.svg', 0, "Profile"),
+            _buildNavItem('assets/images/globe2.svg', 1, "Feed"),
+            _buildNavItem('assets/images/paragraph.svg', 2, "Stories"),
           ],
-        onTap: navigationTapped,
-        currentIndex: _page,
-      ),
+          onTap: navigationTapped,
+          currentIndex: navState.currentPage, // Use the current page from the provider
+        ),
       ),
     );
   }
+
+  BottomNavigationBarItem _buildNavItem(String icon, int index, String label) {
+    final navState = ref.watch(navigationProvider);
+    return BottomNavigationBarItem(
+      icon: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            icon,
+            color: (navState.currentPage == index) ? Colors.purpleAccent : Colors.white,
+            height: 30,
+            width: 40,
+          ),
+          const SizedBox(height: 4),
+        ],
+      ),
+      label: label,
+    );
+  }
 }
+
+
+
+
+

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/FLTFirebaseCorePlugin.h</key>
 		<data>
-		OOdejf2HMc3XvRFhC/XCIJTfbB0=
+		YEYDh2MZ+QMoD8+BtR/CA82ggyA=
 		</data>
 		<key>Headers/FLTFirebasePlugin.h</key>
 		<data>
@@ -16,9 +16,13 @@
 		<data>
 		aUYszQe+qvqVcUXrNyhIvA4v00g=
 		</data>
+		<key>Headers/dummy.h</key>
+		<data>
+		MjCr7s/pVjidi/yPujaWQOsPWeA=
+		</data>
 		<key>Headers/firebase_core-umbrella.h</key>
 		<data>
-		RaDP9izqWMCwqFvUTyFZ1ePt9+Q=
+		h7Q2685gK3TsrxAbSO/qKxdciM4=
 		</data>
 		<key>Headers/messages.g.h</key>
 		<data>
@@ -26,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BssvfzWcFBy3Yilz28UXvCYDHG8=
+		VI+0KIJAVKPQtl+1rlsyvsD/KVA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OOdejf2HMc3XvRFhC/XCIJTfbB0=
+			YEYDh2MZ+QMoD8+BtR/CA82ggyA=
 			</data>
 			<key>hash2</key>
 			<data>
-			z8jGaFNDpERuhDhfDrtuoprHnEpdXZBRTL5T2SgPEQ0=
+			qrj/7FJc6Hxcud1WoU8rWTafvADOanHSCP2REc+FpAk=
 			</data>
 		</dict>
 		<key>Headers/FLTFirebasePlugin.h</key>
@@ -68,15 +72,26 @@
 			8Kk7LfApy8MQldjt4bveNWz7H19jZoBSyC5GoURqj8o=
 			</data>
 		</dict>
+		<key>Headers/dummy.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MjCr7s/pVjidi/yPujaWQOsPWeA=
+			</data>
+			<key>hash2</key>
+			<data>
+			95LxlLYuHF1YMOIAbpCWCfFu/io3Vz/hcg9N2B7NAts=
+			</data>
+		</dict>
 		<key>Headers/firebase_core-umbrella.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RaDP9izqWMCwqFvUTyFZ1ePt9+Q=
+			h7Q2685gK3TsrxAbSO/qKxdciM4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Opuvvzrr+S9g9om4ztiy7oBtgGwHtjp4m3pNCi64sww=
+			36QjlgxsyiH1VRQGintrKz5E8KimedJUgRtr0HdVfDE=
 			</data>
 		</dict>
 		<key>Headers/messages.g.h</key>

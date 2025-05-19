@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/FLTImagePickerPhotoAssetUtil.h</key>
 		<data>
-		0YNhQRGrKT3TJElQFgrPz1QQY1o=
+		xVS+/tZ8Q8rmGORRmOc3Sp8fikQ=
 		</data>
 		<key>Headers/FLTImagePickerPlugin.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Headers/FLTImagePickerPlugin_Test.h</key>
 		<data>
-		QSJKw5WpzTY7aH9q66mflambsIE=
+		klK8quYH8qoZE9pCoPnkY4y3lnM=
 		</data>
 		<key>Headers/FLTPHPickerSaveImageToPathOperation.h</key>
 		<data>
-		gXuTZnjy8p4laZdpoSEXb6Ql4XI=
+		jlXowiM1ZSEn4nT2E7cVOVcVnNE=
 		</data>
 		<key>Headers/image_picker_ios-umbrella.h</key>
 		<data>
@@ -34,15 +34,23 @@
 		</data>
 		<key>Headers/messages.g.h</key>
 		<data>
-		BdV6LvhkNDbWAQdFmk281zM7In8=
+		cooWgcfGyhGQ45GmX2DdvcGp/s0=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5wjtozqMnNetubnwWhr9zz01byo=
+		XxtEQ1cb3VsaIWvGBYvO7+8WD/8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		utEeFhanjdWjDLCc4TFqNbjeY6g=
+		</data>
+		<key>image_picker_ios_privacy.bundle/Info.plist</key>
+		<data>
+		9VmdksDaS/dMqkalenVAdmjQc+o=
+		</data>
+		<key>image_picker_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -65,7 +73,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mq16xg8T6ogdjxO1np6uz6x7mWvvNnEonj9qw/XiaD8=
+			Rxd98uONWhc9uJNYXy/R8Iolzr1f9cNIk+sZ6KCBXzU=
 			</data>
 		</dict>
 		<key>Headers/FLTImagePickerPlugin.h</key>
@@ -79,14 +87,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oinCKM/tuepGD4jMvg4h0OSQ7L39JCUg55f1xi2CO74=
+			w8GSSQnl89cE6ibIovG1Xc3+wWDKAn0VW7VJ6gs0rew=
 			</data>
 		</dict>
 		<key>Headers/FLTPHPickerSaveImageToPathOperation.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TF1PQW7HfFqAxgHeMCMmM/QlWWZBpkGN93AQB07u9GM=
+			CdeBQbpUFC180NchzgvZhlkRnk4Y5Ht5CtF7LbxcyT8=
 			</data>
 		</dict>
 		<key>Headers/image_picker_ios-umbrella.h</key>
@@ -100,7 +108,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OCQQBrMOXYjO+J+pAwLuKZRgutU63NEyTAGLEGV9bMs=
+			oRAatXwe9rRan/dn6rfOBRhhtgBdNBK61HDxulYibBA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -108,6 +116,20 @@
 			<key>hash2</key>
 			<data>
 			jZbtVbbZP4wOZUE32eqGhwZOTha7/2e0oBoYLDnekhc=
+			</data>
+		</dict>
+		<key>image_picker_ios_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UgAcOAnyrTCiJ4ueta6xvxpvm4dHYYIB89o9EHTGuu8=
+			</data>
+		</dict>
+		<key>image_picker_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 	</dict>

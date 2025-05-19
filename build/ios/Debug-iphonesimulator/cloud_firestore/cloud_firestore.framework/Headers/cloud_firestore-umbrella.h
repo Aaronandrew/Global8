@@ -10,6 +10,16 @@
 #endif
 #endif
 
+#import "FirestorePigeonParser.h"
+#import "FLTDocumentSnapshotStreamHandler.h"
+#import "FLTFirebaseFirestoreExtension.h"
+#import "FLTFirebaseFirestoreReader.h"
+#import "FLTFirebaseFirestoreUtils.h"
+#import "FLTFirebaseFirestoreWriter.h"
+#import "FLTLoadBundleStreamHandler.h"
+#import "FLTQuerySnapshotStreamHandler.h"
+#import "FLTSnapshotsInSyncStreamHandler.h"
+#import "FLTTransactionStreamHandler.h"
 #import "CustomPigeonHeaderFirestore.h"
 #import "FirestoreMessages.g.h"
 #import "FLTFirebaseFirestorePlugin.h"

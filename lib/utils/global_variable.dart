@@ -1,19 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// Alias one of the imports to avoid conflict
+import 'package:global8/screens/profile_screen.dart' as profile_screen;
+import 'package:global8/screens/Stories_screen.dart';
 import 'package:global8/screens/add_post_screen.dart';
 import 'package:global8/screens/feed_screen.dart';
-import 'package:global8/screens/profile_screen.dart';
+import 'package:global8/screens/notifications_screen.dart';
 import 'package:global8/screens/search_screen.dart';
-
 
 const webScreenSize = 600;
 
-List<Widget> homeScreenItems = [
-  ProfileScreen(
+List<Widget> homeScreenItems = <Widget>[
+  profile_screen.ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),
-  const AddPostScreen(),
+ // NotificationsScreen(),
   const FeedScreen(),
-  const SearchScreen(),
-  const Text('feed'),
+  //const SearchScreen(),
+  StoriesScreen(),
 ];
